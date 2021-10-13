@@ -3,28 +3,22 @@ import logo from "./logo.svg";
 import "./App.css";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
+import { Hello } from "./graphql-types/Hello";
 
-function App() {
-  const HELLO = gql`
+const App: React.FC = () => {
+  const helloQuery = gql`
     query Hello {
-      hello
+      hello(name: "Javascript")
     }
   `;
 
-  const { loading, error, data } = useQuery(HELLO);
+  const { loading, error, data } = useQuery<Hello>(helloQuery);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {loading
-            ? "loading"
-            : error
-            ? JSON.stringify(error)
-            : data
-            ? JSON.stringify(data)
-            : "wtf"}
-        </p>
+        <p>{loading ? "loading" : error ? error : data ? data.hello : "wtf"}</p>
         <a
           className="App-link"
           href="https://reactjs.org"
@@ -36,6 +30,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;

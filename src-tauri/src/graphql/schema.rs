@@ -5,8 +5,8 @@ pub struct Query;
 
 #[Object]
 impl Query {
-  async fn hello(&self) -> String {
-    "Hello, world!".to_string()
+  async fn hello(&self, name: String) -> String {
+    format!("Hello {}! Welcome to Rust :)", name)
   }
 }
 
