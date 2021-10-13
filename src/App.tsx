@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 
 function App() {
   const HELLO = gql`
-    query {
+    query Hello {
       hello
     }
   `;

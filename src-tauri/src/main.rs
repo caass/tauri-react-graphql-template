@@ -3,12 +3,8 @@
   windows_subsystem = "windows"
 )]
 
-use serde::{Deserialize, Serialize};
-
-#[tauri::command]
-fn handle_graphql(friend: String) -> String {
-  format!("Hello, {}!", friend)
-}
+mod graphql;
+use graphql::handle_graphql;
 
 fn main() {
   tauri::Builder::default()
