@@ -10,7 +10,7 @@
 
 # generated files
 /build
-/target
+src-tauri/target
 *.gql
 *.graphql
 
